@@ -10,8 +10,8 @@ interface ParticlesBackgroundProps {
 }
 
 /**
- * Version 2: Stars Only
- * Clean twinkling stars without connecting lines
+ * Version 3: Absorbers
+ * Particles with gravity attraction + twinkle effect
  */
 export default function ParticlesBackground({
   className,
@@ -38,24 +38,29 @@ export default function ParticlesBackground({
         events: {
           onHover: {
             enable: true,
-            mode: "bubble",
+            mode: "repulse",
+          },
+          onClick: {
+            enable: true,
+            mode: "push",
           },
           resize: {
             enable: true,
           },
         },
         modes: {
-          bubble: {
-            distance: 200,
-            size: 6,
-            duration: 0.3,
-            opacity: 1,
+          repulse: {
+            distance: 100,
+            duration: 0.4,
+          },
+          push: {
+            quantity: 4,
           },
         },
       },
       particles: {
         color: {
-          value: ["#8B5CF6", "#A78BFA", "#C4B5FD", "#6366F1", "#ffffff"],
+          value: ["#8B5CF6", "#A78BFA", "#C4B5FD"],
         },
         move: {
           direction: "none",
@@ -63,9 +68,14 @@ export default function ParticlesBackground({
           outModes: {
             default: "out",
           },
-          random: true,
-          speed: 0.3,
+          random: false,
+          speed: 1.5,
           straight: false,
+          attract: {
+            enable: true,
+            rotateX: 600,
+            rotateY: 1200,
+          },
         },
         number: {
           density: {
@@ -73,13 +83,13 @@ export default function ParticlesBackground({
             width: 1200,
             height: 800,
           },
-          value: 100,
+          value: 60,
         },
         opacity: {
-          value: { min: 0.1, max: 0.8 },
+          value: { min: 0.3, max: 0.7 },
           animation: {
             enable: true,
-            speed: 0.8,
+            speed: 1,
             sync: false,
           },
         },
@@ -87,11 +97,16 @@ export default function ParticlesBackground({
           type: "circle",
         },
         size: {
-          value: { min: 0.5, max: 2.5 },
-          animation: {
+          value: { min: 1, max: 4 },
+        },
+        twinkle: {
+          particles: {
             enable: true,
-            speed: 2,
-            sync: false,
+            frequency: 0.05,
+            opacity: 1,
+            color: {
+              value: "#ffffff",
+            },
           },
         },
       },

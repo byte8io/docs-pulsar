@@ -9,15 +9,12 @@ interface ParticlesBackgroundProps {
   className?: string;
 }
 
-/**
- * Version 2: Stars Only
- * Clean twinkling stars without connecting lines
- */
 export default function ParticlesBackground({
   className,
 }: ParticlesBackgroundProps) {
   const [init, setInit] = useState(false);
 
+  // Initialize the engine once on mount
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadAll(engine);
@@ -38,24 +35,39 @@ export default function ParticlesBackground({
         events: {
           onHover: {
             enable: true,
-            mode: "bubble",
+            mode: "grab",
+          },
+          onClick: {
+            enable: true,
+            mode: "push",
           },
           resize: {
             enable: true,
           },
         },
         modes: {
-          bubble: {
-            distance: 200,
-            size: 6,
-            duration: 0.3,
-            opacity: 1,
+          grab: {
+            distance: 150,
+            links: {
+              opacity: 0.5,
+              color: "#A78BFA",
+            },
+          },
+          push: {
+            quantity: 4,
           },
         },
       },
       particles: {
         color: {
           value: ["#8B5CF6", "#A78BFA", "#C4B5FD", "#6366F1", "#ffffff"],
+        },
+        links: {
+          color: "#8B5CF6",
+          distance: 150,
+          enable: true,
+          opacity: 0.2,
+          width: 1,
         },
         move: {
           direction: "none",
@@ -64,7 +76,7 @@ export default function ParticlesBackground({
             default: "out",
           },
           random: true,
-          speed: 0.3,
+          speed: 1,
           straight: false,
         },
         number: {
@@ -73,26 +85,16 @@ export default function ParticlesBackground({
             width: 1200,
             height: 800,
           },
-          value: 100,
+          value: 80,
         },
         opacity: {
-          value: { min: 0.1, max: 0.8 },
-          animation: {
-            enable: true,
-            speed: 0.8,
-            sync: false,
-          },
+          value: { min: 0.3, max: 0.8 },
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 0.5, max: 2.5 },
-          animation: {
-            enable: true,
-            speed: 2,
-            sync: false,
-          },
+          value: { min: 1, max: 3 },
         },
       },
       detectRetina: true,
@@ -100,7 +102,10 @@ export default function ParticlesBackground({
     []
   );
 
-  if (!init) return null;
+  // Don't render until engine is initialized
+  if (!init) {
+    return null;
+  }
 
   return <Particles className={className} options={options} />;
 }

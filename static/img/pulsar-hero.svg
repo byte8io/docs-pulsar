@@ -62,10 +62,10 @@
 
   <!-- Small orbiting dots -->
   <circle cx="80" cy="25" r="4" fill="#C4B5FD">
-    <animateTransform attributeName="transform" type="rotate" from="0 80 80" to="360 80 80" dur="8s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="rotate" from="0 80 80" to="360 80 80" dur="20s" repeatCount="indefinite"/>
   </circle>
 
   <circle cx="80" cy="135" r="3" fill="#A78BFA" opacity="0.7">
-    <animateTransform attributeName="transform" type="rotate" from="180 80 80" to="540 80 80" dur="12s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="rotate" from="180 80 80" to="540 80 80" dur="30s" repeatCount="indefinite"/>
   </circle>
 </svg>

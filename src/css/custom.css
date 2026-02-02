@@ -268,6 +268,41 @@
 }
 
 /* =============================================================================
+   Particles Background Integration
+   ============================================================================= */
+
+/* Main content area - above particles, slightly transparent */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+[data-theme="dark"] main {
+  background-color: rgba(10, 10, 11, 0.85);
+}
+
+/* Footer - above particles, slightly transparent */
+.footer {
+  position: relative;
+  z-index: 10;
+  margin-top: 14rem;
+}
+
+[data-theme="dark"] .footer {
+  background-color: rgba(24, 24, 27, 0.9) !important;
+}
+
+/* Navbar - above particles */
+.navbar {
+  position: relative;
+  z-index: 100;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: rgba(24, 24, 27, 0.95) !important;
+}
+
+/* =============================================================================
    Custom Components
    ============================================================================= */
 

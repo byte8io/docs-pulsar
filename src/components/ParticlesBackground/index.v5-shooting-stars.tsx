@@ -10,8 +10,8 @@ interface ParticlesBackgroundProps {
 }
 
 /**
- * Version 2: Stars Only
- * Clean twinkling stars without connecting lines
+ * Version 5: Shooting Stars
+ * Occasional shooting stars/meteors streaking across
  */
 export default function ParticlesBackground({
   className,
@@ -34,67 +34,57 @@ export default function ParticlesBackground({
         },
       },
       fpsLimit: 60,
-      interactivity: {
-        events: {
-          onHover: {
-            enable: true,
-            mode: "bubble",
-          },
-          resize: {
-            enable: true,
-          },
-        },
-        modes: {
-          bubble: {
-            distance: 200,
-            size: 6,
-            duration: 0.3,
-            opacity: 1,
-          },
-        },
-      },
       particles: {
         color: {
-          value: ["#8B5CF6", "#A78BFA", "#C4B5FD", "#6366F1", "#ffffff"],
+          value: ["#8B5CF6", "#A78BFA", "#C4B5FD", "#ffffff"],
         },
         move: {
-          direction: "none",
+          direction: "bottom-left",
           enable: true,
           outModes: {
             default: "out",
           },
-          random: true,
-          speed: 0.3,
-          straight: false,
+          random: false,
+          speed: { min: 10, max: 20 },
+          straight: true,
         },
         number: {
-          density: {
-            enable: true,
-            width: 1200,
-            height: 800,
-          },
-          value: 100,
+          value: 0,
         },
         opacity: {
-          value: { min: 0.1, max: 0.8 },
-          animation: {
-            enable: true,
-            speed: 0.8,
-            sync: false,
-          },
+          value: { min: 0.4, max: 1 },
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 0.5, max: 2.5 },
-          animation: {
-            enable: true,
-            speed: 2,
-            sync: false,
+          value: { min: 1, max: 3 },
+        },
+        trail: {
+          enable: true,
+          length: 20,
+          fill: {
+            color: "#0A0A0B",
           },
         },
       },
+      emitters: [
+        {
+          direction: "bottom-left",
+          rate: {
+            delay: 1.5,
+            quantity: 1,
+          },
+          position: {
+            x: 100,
+            y: 0,
+          },
+          size: {
+            width: 100,
+            height: 0,
+          },
+        },
+      ],
       detectRetina: true,
     }),
     []

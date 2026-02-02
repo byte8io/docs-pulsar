@@ -9,6 +9,12 @@
   padding: 5rem 0;
   width: 100%;
   background-color: var(--ifm-background-surface-color);
+  position: relative;
+  z-index: 10;
+}
+
+[data-theme="dark"] .features {
+  background-color: rgba(24, 24, 27, 0.85);
 }
 
 .featuresTitle {
