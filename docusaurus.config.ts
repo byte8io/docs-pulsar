@@ -73,11 +73,6 @@ const config: Config = {
           label: "Dashboard",
           position: "left",
         },
-        {
-          href: "https://github.com/byte8/pulsar-docs",
-          label: "GitHub",
-          position: "right",
-        },
       ],
     },
     footer: {
