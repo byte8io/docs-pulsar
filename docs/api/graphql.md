@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
-title: GraphQL API
+title: GraphQL API Reference
+description: Complete GraphQL API reference for Pulsar. Query sites, checks, alerts, and statistics. Manage monitoring configuration programmatically.
+keywords: [graphql api, pulsar api, monitoring api, api reference, graphql queries, graphql mutations]
 ---
 
 # GraphQL API

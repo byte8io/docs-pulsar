@@ -1,6 +1,8 @@
 ---
 sidebar_position: 3
 title: Slack Integration
+description: Connect Pulsar to Slack for real-time Magento monitoring alerts. Set up webhooks, configure channels, and receive instant downtime notifications.
+keywords: [slack integration, slack alerts, slack webhooks, team notifications, slack monitoring]
 ---
 
 # Slack Integration

@@ -1,6 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 title: Webhooks
+description: Integrate Pulsar with any system using webhooks. Receive JSON payloads for alerts with signature verification for secure custom integrations.
+keywords: [webhooks, custom integration, api callbacks, alert webhooks, monitoring webhooks]
 ---
 
 # Webhooks

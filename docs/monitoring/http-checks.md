@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 title: HTTP Checks
+description: Monitor your Magento store's availability with HTTP health checks. Track response times, status codes, and content verification.
+keywords: [http monitoring, uptime checks, magento health check, response time monitoring]
 ---
 
 # HTTP Checks

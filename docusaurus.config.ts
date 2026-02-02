@@ -25,6 +25,31 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
+  // SEO: Head tags for all pages
+  headTags: [
+    {
+      tagName: "meta",
+      attributes: {
+        name: "keywords",
+        content: "magento monitoring, ecommerce monitoring, uptime monitoring, synthetic testing, checkout monitoring, magento health checks",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "author",
+        content: "Byte8",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "canonical",
+        href: "https://docs.pulsar.byte8.io",
+      },
+    },
+  ],
+
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -48,7 +73,15 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "img/pulsar-social-card.png",
+    // Social card for sharing (Open Graph / Twitter)
+    image: "img/pulsar-social-card.jpg",
+    metadata: [
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pulsar - Magento Monitoring & Synthetic Checks" },
+      { name: "twitter:description", content: "Real-time uptime monitoring, synthetic checkout flow testing, and intelligent alerting for Magento stores." },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Pulsar Docs" },
+    ],
     colorMode: {
       defaultMode: "dark",
       disableSwitch: false,

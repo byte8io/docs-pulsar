@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 title: Email Notifications
+description: Configure email alerts for your Magento store monitoring. Set up multiple recipients, customize notification frequency, and manage alert types.
+keywords: [email alerts, email notifications, monitoring emails, alert recipients, downtime email]
 ---
 
 # Email Notifications

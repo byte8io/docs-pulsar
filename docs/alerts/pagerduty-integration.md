@@ -1,6 +1,8 @@
 ---
 sidebar_position: 5
 title: PagerDuty Integration
+description: Connect Pulsar to PagerDuty for on-call alerting and incident management. Automatic incident creation and resolution for Magento store monitoring.
+keywords: [pagerduty integration, incident management, on-call alerts, pagerduty events api, magento incidents]
 ---
 
 # PagerDuty Integration

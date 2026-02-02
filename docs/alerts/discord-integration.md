@@ -1,6 +1,8 @@
 ---
 sidebar_position: 4
 title: Discord Integration
+description: Connect Pulsar to Discord for real-time Magento monitoring alerts. Configure webhooks and receive instant notifications in your Discord server.
+keywords: [discord integration, discord alerts, discord webhooks, discord notifications, monitoring discord]
 ---
 
 # Discord Integration

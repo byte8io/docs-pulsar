@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
-title: Authentication
+title: API Authentication
+description: Learn how to authenticate with the Pulsar API. Session-based authentication for web access and upcoming personal access tokens for programmatic use.
+keywords: [api authentication, pulsar api, session authentication, api access, api security]
 ---
 
 # API Authentication

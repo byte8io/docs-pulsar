@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 title: Alerts Overview
+description: Learn how Pulsar's intelligent alerting system notifies you of Magento store issues. Configure email, Slack, Discord, PagerDuty, and webhook notifications.
+keywords: [alerts, notifications, magento alerts, downtime alerts, alert management, monitoring alerts]
 ---
 
 # Alerts Overview

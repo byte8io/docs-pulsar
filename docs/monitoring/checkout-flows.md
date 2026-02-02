@@ -1,6 +1,8 @@
 ---
 sidebar_position: 3
-title: Checkout Flows
+title: Checkout Flow Monitoring
+description: Simulate complete purchase journeys through your Magento checkout. Catch payment integration issues and broken checkout flows before customers do.
+keywords: [checkout monitoring, synthetic testing, magento checkout, purchase flow testing, ecommerce monitoring]
 ---
 
 # Checkout Flow Monitoring

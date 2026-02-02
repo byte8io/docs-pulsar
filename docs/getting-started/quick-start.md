@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
-title: Quick Start
+title: Quick Start Guide
+description: Get started with Pulsar Magento monitoring in under 5 minutes. Add your first site and configure uptime monitoring, alerts, and checkout flow testing.
+keywords: [getting started, quick start, magento monitoring setup, pulsar setup, site monitoring]
 ---
 
 # Quick Start

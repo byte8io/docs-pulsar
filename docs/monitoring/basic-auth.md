@@ -1,6 +1,8 @@
 ---
 sidebar_position: 4
-title: Basic Auth
+title: Basic Authentication
+description: Configure HTTP Basic Authentication for monitoring password-protected Magento staging and development environments.
+keywords: [basic auth, http authentication, staging monitoring, password protected, magento staging]
 ---
 
 # Basic Authentication

@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 title: Adding Sites
+description: Learn how to add and configure Magento sites in Pulsar. Set up monitored pages, browser checks, checkout flows, and basic authentication.
+keywords: [add site, site configuration, magento monitoring, monitored pages, site settings]
 ---
 
 # Adding Sites

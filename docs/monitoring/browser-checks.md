@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 title: Browser Checks
+description: Detect JavaScript errors on your Magento store using headless browser monitoring. Capture console errors, uncaught exceptions, and network failures.
+keywords: [javascript monitoring, browser checks, console errors, magento javascript, frontend monitoring]
 ---
 
 # Browser Checks
