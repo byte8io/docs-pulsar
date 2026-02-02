@@ -1,47 +1,35 @@
 ---
 sidebar_position: 1
+slug: /
+title: Introduction
 ---
 
-# Tutorial Intro
+# Welcome to Pulsar
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Pulsar is a comprehensive monitoring solution for Magento stores. It provides real-time uptime monitoring, synthetic checkout flow testing, and intelligent alerting to help you keep your e-commerce site running smoothly.
+
+## What is Pulsar?
+
+Pulsar monitors your Magento store from multiple angles:
+
+- **HTTP Checks** - Monitor endpoint availability and response times
+- **Browser Checks** - Detect JavaScript errors and rendering issues
+- **Checkout Flows** - Simulate complete purchase journeys to catch payment integration issues
+
+## Key Features
+
+### Real-time Monitoring
+Pulsar checks your site every minute from multiple global locations, giving you immediate visibility into outages and performance degradation.
+
+### Smart Alerting
+Get notified through your preferred channels (email, Slack, webhooks) when issues are detected. Pulsar includes intelligent deduplication to prevent alert fatigue.
+
+### Checkout Flow Testing
+Our browser-based synthetic tests simulate real customer journeys through your checkout process, catching issues before your customers do.
+
+### JavaScript Error Detection
+Pulsar captures console errors and uncaught exceptions, helping you identify frontend issues that could impact conversions.
 
 ## Getting Started
 
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Ready to start monitoring? Head to the [Quick Start](/getting-started/quick-start) guide to add your first site.

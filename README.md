@@ -1,41 +1,64 @@
-# Website
+# Pulsar Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Public documentation site for Pulsar - Magento Monitoring & Synthetic Checks.
 
-## Installation
+**URL:** https://docs.pulsar.byte8.io
 
-```bash
-yarn
-```
+Built with [Docusaurus](https://docusaurus.io/).
 
-## Local Development
+## Development
 
 ```bash
-yarn start
+# Install dependencies
+pnpm install
+
+# Start development server (port 3006)
+pnpm start
+
+# Build for production
+pnpm build
+
+# Serve production build locally
+pnpm serve
 ```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
-```bash
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ## Deployment
 
-Using SSH:
+This site will be deployed to GitHub Pages at `docs.pulsar.byte8.io` via a separate repository.
 
 ```bash
-USE_SSH=true yarn deploy
+# Deploy to GitHub Pages
+GIT_USER=<username> pnpm deploy
 ```
 
-Not using SSH:
+## Structure
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
+```
+docs/
+├── intro.md                    # Landing page (/)
+├── getting-started/
+│   ├── quick-start.md
+│   └── adding-sites.md
+├── monitoring/
+│   ├── http-checks.md
+│   ├── browser-checks.md
+│   ├── checkout-flows.md
+│   └── error-patterns.md
+├── alerts/
+│   ├── overview.md
+│   ├── email-notifications.md
+│   ├── slack-integration.md
+│   └── webhooks.md
+└── api/
+    ├── graphql.md
+    └── authentication.md
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Theme
+
+Custom CSS in `src/css/custom.css` matches the Pulsar web app color palette:
+
+- **Primary:** `#8B5CF6` (purple)
+- **Background:** `#0A0A0B` (dark mode)
+- **Paper:** `#18181B`
+- **Border:** `#27272A`

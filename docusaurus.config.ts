@@ -66,7 +66,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "docsSidebar",
           position: "left",
-          label: "Documentation",
+          label: "Docs",
         },
         {
           href: "https://pulsar.byte8.io",
