@@ -32,4 +32,4 @@ Pulsar captures console errors and uncaught exceptions, helping you identify fro
 
 ## Getting Started
 
-Ready to start monitoring? Head to the [Quick Start](/getting-started/quick-start) guide to add your first site.
+Ready to start monitoring? Head to the [Quick Start](/docs/getting-started/quick-start) guide to add your first site.

@@ -1,0 +1,81 @@
+/**
+ * Homepage Features Section
+ * Pulsar monitoring capabilities
+ */
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  width: 100%;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.featuresTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .featuresTitle {
+  background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.featuresSubtitle {
+  font-size: 1.25rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .featureIcon {
+  color: #a78bfa;
+}
+
+.features .col {
+  margin-bottom: 2.5rem;
+}
+
+.features h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.features p {
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 3rem 0;
+  }
+
+  .featuresTitle {
+    font-size: 2rem;
+  }
+
+  .featuresSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .featureIcon {
+    height: 70px;
+  }
+}

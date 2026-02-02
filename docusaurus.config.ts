@@ -36,7 +36,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          routeBasePath: "/", // Docs at root instead of /docs
+          routeBasePath: "/docs",
           editUrl: "https://github.com/byte8/pulsar-docs/tree/main/",
         },
         blog: false, // Disable blog for now
@@ -83,15 +83,15 @@ const config: Config = {
           items: [
             {
               label: "Getting Started",
-              to: "/",
+              to: "/docs",
             },
             {
               label: "HTTP Monitoring",
-              to: "/monitoring/http-checks",
+              to: "/docs/monitoring/http-checks",
             },
             {
               label: "Checkout Flows",
-              to: "/monitoring/checkout-flows",
+              to: "/docs/monitoring/checkout-flows",
             },
           ],
         },

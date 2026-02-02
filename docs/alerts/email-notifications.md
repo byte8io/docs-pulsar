@@ -106,4 +106,4 @@ Choose which alert types trigger emails:
 
 ### Delayed Emails
 
-Email delivery depends on your email provider. For time-critical alerts, consider adding [Slack](/alerts/slack-integration) or [webhooks](/alerts/webhooks) as backup channels.
+Email delivery depends on your email provider. For time-critical alerts, consider adding [Slack](./slack-integration) or [webhooks](./webhooks) as backup channels.

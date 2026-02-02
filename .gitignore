@@ -20,4 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Misc
-/apps/pulsar/_internal
+/apps/pulsar/_internal.turbo

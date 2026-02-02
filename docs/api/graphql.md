@@ -15,7 +15,7 @@ POST https://pulsar.byte8.io/graphql
 
 ## Authentication
 
-The API uses session-based authentication. See [Authentication](/api/authentication) for details.
+The API uses session-based authentication. See [Authentication](./authentication) for details.
 
 ## Schema Overview
 

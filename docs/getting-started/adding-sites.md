@@ -54,7 +54,7 @@ If your site is protected behind HTTP Basic Authentication:
 2. Enter the **Username** and **Password**
 3. Save the configuration
 
-See [Basic Auth](/monitoring/basic-auth) for more details.
+See [Basic Auth](../monitoring/basic-auth) for more details.
 
 ## Managing Sites
 

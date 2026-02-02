@@ -49,7 +49,7 @@ Go to **Settings** (gear icon) to configure how you want to be alerted:
 
 ## What's Next?
 
-- Learn about [HTTP Checks](/monitoring/http-checks) in detail
-- Set up [Checkout Flow](/monitoring/checkout-flows) monitoring
-- Configure [Slack Integration](/alerts/slack-integration)
-- Set up [Basic Auth](/monitoring/basic-auth) for protected sites
+- Learn about [HTTP Checks](../monitoring/http-checks) in detail
+- Set up [Checkout Flow](../monitoring/checkout-flows) monitoring
+- Configure [Slack Integration](../alerts/slack-integration)
+- Set up [Basic Auth](../monitoring/basic-auth) for protected sites

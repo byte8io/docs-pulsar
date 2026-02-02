@@ -57,11 +57,11 @@ Configure how you receive alerts:
 
 | Channel | Use Case |
 |---------|----------|
-| [Email](/alerts/email-notifications) | Default, always-on alerting |
-| [Slack](/alerts/slack-integration) | Team visibility, quick response |
-| [Discord](/alerts/discord-integration) | Team chat integration |
-| [PagerDuty](/alerts/pagerduty-integration) | On-call escalation |
-| [Webhooks](/alerts/webhooks) | Custom integrations |
+| [Email](./email-notifications) | Default, always-on alerting |
+| [Slack](./slack-integration) | Team visibility, quick response |
+| [Discord](./discord-integration) | Team chat integration |
+| [PagerDuty](./pagerduty-integration) | On-call escalation |
+| [Webhooks](./webhooks) | Custom integrations |
 
 ## Muting Alerts
 
