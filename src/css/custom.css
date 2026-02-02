@@ -1,0 +1,326 @@
+/**
+ * Pulsar Documentation Theme
+ *
+ * Custom CSS to match the Pulsar web app color palette.
+ * Colors sourced from apps/pulsar/web/src/lib/theme.ts
+ */
+
+/* =============================================================================
+   Light Mode (for users who prefer light themes)
+   ============================================================================= */
+:root {
+  /* Primary - Purple/Violet */
+  --ifm-color-primary: #8B5CF6;
+  --ifm-color-primary-dark: #7C3AED;
+  --ifm-color-primary-darker: #6D28D9;
+  --ifm-color-primary-darkest: #5B21B6;
+  --ifm-color-primary-light: #A78BFA;
+  --ifm-color-primary-lighter: #C4B5FD;
+  --ifm-color-primary-lightest: #DDD6FE;
+
+  /* Secondary - Indigo */
+  --ifm-color-secondary: #6366F1;
+
+  /* Semantic colors */
+  --ifm-color-success: #10B981;
+  --ifm-color-success-dark: #059669;
+  --ifm-color-success-light: #34D399;
+
+  --ifm-color-warning: #F59E0B;
+  --ifm-color-warning-dark: #D97706;
+  --ifm-color-warning-light: #FBBF24;
+
+  --ifm-color-danger: #EF4444;
+  --ifm-color-danger-dark: #DC2626;
+  --ifm-color-danger-light: #F87171;
+
+  --ifm-color-info: #6366F1;
+
+  /* Typography */
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --ifm-heading-font-weight: 600;
+  --ifm-font-weight-semibold: 600;
+
+  /* Code */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.1);
+
+  /* Layout */
+  --ifm-global-radius: 8px;
+  --ifm-code-border-radius: 6px;
+
+  /* Links */
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-dark);
+}
+
+/* =============================================================================
+   Dark Mode (default for Pulsar)
+   ============================================================================= */
+[data-theme="dark"] {
+  /* Primary - Purple/Violet (slightly lighter for dark mode) */
+  --ifm-color-primary: #A78BFA;
+  --ifm-color-primary-dark: #8B5CF6;
+  --ifm-color-primary-darker: #7C3AED;
+  --ifm-color-primary-darkest: #6D28D9;
+  --ifm-color-primary-light: #C4B5FD;
+  --ifm-color-primary-lighter: #DDD6FE;
+  --ifm-color-primary-lightest: #EDE9FE;
+
+  /* Background colors matching Pulsar app */
+  --ifm-background-color: #0A0A0B;
+  --ifm-background-surface-color: #18181B;
+  --ifm-navbar-background-color: #18181B;
+  --ifm-footer-background-color: #18181B;
+  --ifm-toc-border-color: #27272A;
+  --ifm-color-emphasis-300: #27272A;
+
+  /* Text colors */
+  --ifm-font-color-base: #FAFAFA;
+  --ifm-font-color-secondary: #A1A1AA;
+  --ifm-heading-color: #FAFAFA;
+
+  /* Code highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.2);
+
+  /* Card/paper backgrounds */
+  --ifm-card-background-color: #18181B;
+  --ifm-menu-color-background-active: #27272A;
+  --ifm-menu-color-background-hover: #27272A;
+
+  /* Borders */
+  --ifm-hr-border-color: #27272A;
+  --ifm-toc-border-color: #27272A;
+  --ifm-color-emphasis-200: #27272A;
+}
+
+/* =============================================================================
+   Component Overrides
+   ============================================================================= */
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 1px 0 0 var(--ifm-toc-border-color);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #18181B;
+  border-bottom: 1px solid #27272A;
+}
+
+.navbar__title {
+  font-weight: 600;
+}
+
+/* Sidebar */
+[data-theme="dark"] .menu {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .menu__link:hover {
+  background-color: #27272A;
+}
+
+[data-theme="dark"] .menu__link--active {
+  background-color: rgba(139, 92, 246, 0.15);
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+/* Table of Contents */
+[data-theme="dark"] .table-of-contents__link:hover,
+[data-theme="dark"] .table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Code blocks */
+[data-theme="dark"] .prism-code {
+  background-color: #1E1E1E !important;
+}
+
+[data-theme="dark"] pre {
+  background-color: #1E1E1E;
+  border: 1px solid #27272A;
+}
+
+/* Inline code */
+[data-theme="dark"] code {
+  background-color: #27272A;
+  border: 1px solid #3F3F46;
+  color: #A78BFA;
+}
+
+/* Admonitions/Alerts */
+[data-theme="dark"] .alert {
+  background-color: #18181B;
+  border-left-width: 4px;
+}
+
+[data-theme="dark"] .alert--info {
+  --ifm-alert-background-color: rgba(99, 102, 241, 0.1);
+  --ifm-alert-border-color: #6366F1;
+}
+
+[data-theme="dark"] .alert--warning {
+  --ifm-alert-background-color: rgba(245, 158, 11, 0.1);
+  --ifm-alert-border-color: #F59E0B;
+}
+
+[data-theme="dark"] .alert--danger {
+  --ifm-alert-background-color: rgba(239, 68, 68, 0.1);
+  --ifm-alert-border-color: #EF4444;
+}
+
+[data-theme="dark"] .alert--success {
+  --ifm-alert-background-color: rgba(16, 185, 129, 0.1);
+  --ifm-alert-border-color: #10B981;
+}
+
+/* Cards */
+[data-theme="dark"] .card {
+  background-color: #18181B;
+  border: 1px solid #27272A;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+  background-color: #18181B;
+  border-top: 1px solid #27272A;
+}
+
+.footer__title {
+  font-weight: 600;
+}
+
+/* Search (for when Algolia is configured) */
+[data-theme="dark"] .DocSearch-Button {
+  background-color: #27272A;
+  border: 1px solid #3F3F46;
+}
+
+[data-theme="dark"] .DocSearch-Button:hover {
+  background-color: #3F3F46;
+}
+
+/* Tables */
+[data-theme="dark"] table {
+  border-collapse: collapse;
+}
+
+[data-theme="dark"] th {
+  background-color: #18181B;
+  font-weight: 600;
+}
+
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+  border-color: #27272A;
+}
+
+[data-theme="dark"] tr:nth-child(2n) {
+  background-color: rgba(39, 39, 42, 0.5);
+}
+
+/* Pagination */
+[data-theme="dark"] .pagination-nav__link {
+  background-color: #18181B;
+  border: 1px solid #27272A;
+}
+
+[data-theme="dark"] .pagination-nav__link:hover {
+  background-color: #27272A;
+  border-color: var(--ifm-color-primary);
+}
+
+/* Tabs */
+[data-theme="dark"] .tabs__item {
+  border-bottom-color: transparent;
+}
+
+[data-theme="dark"] .tabs__item--active {
+  border-bottom-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .tabs__item:hover {
+  background-color: #27272A;
+}
+
+/* Breadcrumbs */
+[data-theme="dark"] .breadcrumbs__link {
+  color: var(--ifm-font-color-secondary);
+}
+
+[data-theme="dark"] .breadcrumbs__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* =============================================================================
+   Custom Components
+   ============================================================================= */
+
+/* Feature cards on homepage */
+.feature-card {
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  transition: border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+/* API reference styling */
+.api-method {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.api-method--get {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+}
+
+.api-method--post {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #6366F1;
+}
+
+.api-method--put {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #F59E0B;
+}
+
+.api-method--delete {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+/* Version badge */
+.version-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: rgba(139, 92, 246, 0.2);
+  color: var(--ifm-color-primary);
+}
