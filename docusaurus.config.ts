@@ -116,10 +116,6 @@ const config: Config = {
               href: "https://byte8.io",
             },
             {
-              label: "GitHub",
-              href: "https://github.com/byte8",
-            },
-            {
               label: "Contact",
               href: "mailto:support@byte8.io",
             },
