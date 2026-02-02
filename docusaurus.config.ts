@@ -103,6 +103,10 @@ const config: Config = {
               href: "https://pulsar.byte8.io",
             },
             {
+              label: "Status",
+              href: "https://pulsar.byte8.io/status",
+            },
+            {
               label: "Pricing",
               href: "https://byte8.io/pulsar/pricing",
             },
