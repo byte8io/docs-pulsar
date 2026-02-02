@@ -9,7 +9,9 @@ Learn how to add and configure sites in Pulsar.
 
 ## Creating a New Site
 
-From the Pulsar dashboard, click **Add Site** to open the site creation form.
+1. Go to **Sites** in the left-hand menu
+2. Click **Add Site** button (top right)
+3. Fill in the required fields and click **Create**
 
 ### Required Fields
 
@@ -17,51 +19,75 @@ From the Pulsar dashboard, click **Add Site** to open the site creation form.
 |-------|-------------|
 | **Name** | A friendly name for your site (e.g., "Production Store") |
 | **URL** | The base URL of your Magento store |
+| **Check Interval** | How often to run health checks (depends on your plan tier) |
 
 ### Optional Settings
 
 | Setting | Description | Default |
 |---------|-------------|---------|
-| **Check Interval** | How often to run health checks | 1 minute |
-| **Browser Checks** | Enable JavaScript error detection | Enabled |
+| **Browser Checks** | Enable JavaScript error detection | Disabled |
 | **Checkout Flows** | Enable synthetic checkout testing | Disabled |
+| **Basic Auth** | Username/password for protected sites | None |
 
 ## Site Configuration
 
-After creating a site, you can configure additional settings:
+After creating a site, click on it to access the site detail page where you can configure additional settings.
 
-### Pages to Monitor
+### Monitored Pages
 
-By default, Pulsar monitors your homepage. You can add additional pages:
+By default, Pulsar monitors your homepage. You can add additional pages to monitor:
 
-1. Go to your site's settings
-2. Click **Pages**
-3. Add URLs relative to your base URL (e.g., `/checkout/cart`)
+1. In the site detail page, find the **Monitored Pages** section
+2. Click **Add Page**
+3. Fill in the form:
+   - **Page Name** - A descriptive name for the page
+   - **Path** - The URL path relative to your site (e.g., `/checkout/cart`)
+   - **Check Interval** - How often to check this page
+   - **Use Browser Check** - Enable to detect JavaScript errors
+4. Click **Save**
 
-### Error Patterns
+### Basic Auth Configuration
 
-Configure patterns to ignore known, non-critical errors:
+If your site is protected behind HTTP Basic Authentication:
 
-1. Go to **Settings > Error Patterns**
-2. Add regex patterns for errors to ignore
-3. These patterns apply to both console errors and exceptions
+1. In the site settings, find the **Basic Auth** section
+2. Enter the **Username** and **Password**
+3. Save the configuration
+
+See [Basic Auth](/monitoring/basic-auth) for more details.
 
 ## Managing Sites
 
-### Muting a Site
+### Pause Monitoring
 
-Temporarily disable alerting for a site (useful during maintenance):
+Temporarily stop all checks for a site:
 
-1. Open the site
-2. Click **Mute** in the toolbar
-3. Alerts will be suppressed until you unmute
+1. Open the site detail page
+2. Click **Pause Monitoring**
+3. Checks will stop until you resume
+
+This is useful during planned maintenance or migrations.
+
+### Muting Alerts
+
+Temporarily disable alerting while keeping checks running:
+
+1. Open the site detail page
+2. Click **Mute**
+3. Checks continue but alerts are suppressed
+4. Click **Unmute** when ready to receive alerts again
+
+:::tip
+Use **Mute** during deployments when you expect brief downtime. Use **Pause Monitoring** for extended maintenance.
+:::
 
 ### Deleting a Site
 
-1. Go to site settings
-2. Scroll to the bottom
-3. Click **Delete Site**
-4. Confirm the deletion
+1. Open the site detail page
+2. Go to site settings
+3. Scroll to the bottom
+4. Click **Delete Site**
+5. Confirm the deletion
 
 :::warning
 Deleting a site removes all historical check data and cannot be undone.

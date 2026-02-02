@@ -33,7 +33,7 @@ Created → Notified → Resolved/Acknowledged
 When an issue is first detected, an alert is created.
 
 ### Notified
-Notifications are sent through all configured channels (email, Slack, webhooks).
+Notifications are sent through all configured channels (email, Slack, Discord, etc.).
 
 ### Resolved
 The alert auto-resolves when:
@@ -59,7 +59,9 @@ Configure how you receive alerts:
 |---------|----------|
 | [Email](/alerts/email-notifications) | Default, always-on alerting |
 | [Slack](/alerts/slack-integration) | Team visibility, quick response |
-| [Webhooks](/alerts/webhooks) | Custom integrations, PagerDuty, etc. |
+| [Discord](/alerts/discord-integration) | Team chat integration |
+| [PagerDuty](/alerts/pagerduty-integration) | On-call escalation |
+| [Webhooks](/alerts/webhooks) | Custom integrations |
 
 ## Muting Alerts
 

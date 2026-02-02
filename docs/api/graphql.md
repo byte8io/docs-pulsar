@@ -5,26 +5,17 @@ title: GraphQL API
 
 # GraphQL API
 
-Pulsar provides a GraphQL API for programmatic access to your monitoring data.
+Pulsar provides a GraphQL API for accessing your monitoring data.
 
 ## Endpoint
 
 ```
-POST https://api.pulsar.byte8.io/graphql
+POST https://pulsar.byte8.io/graphql
 ```
 
 ## Authentication
 
-Include your session token in the request:
-
-```bash
-curl -X POST https://api.pulsar.byte8.io/graphql \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{"query": "{ sites { id name } }"}'
-```
-
-See [Authentication](/api/authentication) for details on obtaining tokens.
+The API uses session-based authentication. See [Authentication](/api/authentication) for details.
 
 ## Schema Overview
 
@@ -32,26 +23,36 @@ See [Authentication](/api/authentication) for details on obtaining tokens.
 
 ```graphql
 type Query {
-  # Get all sites for the current user
-  sites: [Site!]!
+  # Current user
+  me: User
 
-  # Get a specific site by ID
+  # Sites
+  sites: [Site!]!
   site(id: ID!): Site
 
-  # Get checks for a site
-  checks(siteId: ID!, limit: Int): [Check!]!
+  # Site pages
+  sitePages(siteId: ID!): [SitePage!]!
 
-  # Get alerts
+  # Checks
+  checks(siteId: ID!, limit: Int): [Check!]!
+  recentActivity(siteId: ID!, limit: Int): [Check!]!
+
+  # Alerts
   alerts(siteId: ID, unresolvedOnly: Boolean, limit: Int): [Alert!]!
 
-  # Dashboard statistics
+  # Statistics
   dashboardStats: DashboardStats!
-
-  # Site-specific statistics
   siteStats(siteId: ID!): SiteStats!
+  uptimeData(siteId: ID!, days: Int): [UptimeDataPoint!]!
+  responseTimeData(siteId: ID!, days: Int): [ResponseTimeDataPoint!]!
+  quotaUsage: QuotaInfo!
 
   # Notification settings
   notificationSettings: NotificationSettings
+
+  # Error patterns (per site or page)
+  siteErrorPatterns(siteId: ID!): [ErrorPattern!]!
+  pageErrorPatterns(pageId: ID!): [ErrorPattern!]!
 }
 ```
 
@@ -59,26 +60,37 @@ type Query {
 
 ```graphql
 type Mutation {
-  # Create a new site
+  # Sites
   createSite(input: CreateSiteInput!): Site!
-
-  # Update a site
   updateSite(id: ID!, input: UpdateSiteInput!): Site!
-
-  # Delete a site
   deleteSite(id: ID!): Boolean!
+  muteSite(id: ID!): Site!
+  unmuteSite(id: ID!): Site!
 
-  # Mute/unmute a site
-  muteSite(id: ID!, muted: Boolean!): Site!
+  # Checkout flow
+  updateCheckoutFlowConfig(id: ID!, input: CheckoutFlowInput!): Site!
+  disableCheckoutFlow(id: ID!): Site!
 
-  # Resolve an alert
+  # Site pages
+  createSitePage(input: CreateSitePageInput!): SitePage!
+  updateSitePage(id: ID!, input: UpdateSitePageInput!): SitePage!
+  deleteSitePage(id: ID!): Boolean!
+
+  # Alerts
   resolveAlert(id: ID!): Alert!
-
-  # Trigger an immediate check
   triggerCheck(siteId: ID!): Boolean!
 
-  # Update notification settings
+  # Notifications
   updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings!
+  testNotification(channel: String!): Boolean!
+
+  # Error patterns
+  createSiteErrorPattern(input: CreateErrorPatternInput!): ErrorPattern!
+  updateSiteErrorPattern(id: ID!, input: UpdateErrorPatternInput!): ErrorPattern!
+  deleteSiteErrorPattern(id: ID!): Boolean!
+  createPageErrorPattern(input: CreateErrorPatternInput!): ErrorPattern!
+  updatePageErrorPattern(id: ID!, input: UpdateErrorPatternInput!): ErrorPattern!
+  deletePageErrorPattern(id: ID!): Boolean!
 }
 ```
 
@@ -93,9 +105,10 @@ type Site {
   url: String!
   status: SiteStatus!
   muted: Boolean!
-  checkInterval: Int!
+  checkIntervalSeconds: Int!
   browserChecks: Boolean!
-  checkoutFlows: Boolean!
+  checkoutFlowEnabled: Boolean!
+  basicAuthUsername: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -104,7 +117,24 @@ enum SiteStatus {
   UP
   DOWN
   DEGRADED
+  PAUSED
   UNKNOWN
+}
+```
+
+### SitePage
+
+```graphql
+type SitePage {
+  id: ID!
+  siteId: ID!
+  name: String!
+  path: String!
+  checkIntervalSeconds: Int!
+  browserCheck: Boolean!
+  enabled: Boolean!
+  status: SiteStatus!
+  createdAt: DateTime!
 }
 ```
 
@@ -114,12 +144,25 @@ enum SiteStatus {
 type Check {
   id: ID!
   siteId: ID!
+  pageId: ID
+  checkType: CheckType!
   status: CheckStatus!
   responseTimeMs: Int
   statusCode: Int
   errorMessage: String
   jsErrors: [JsError!]
   createdAt: DateTime!
+}
+
+enum CheckType {
+  HTTP
+  BROWSER
+  CHECKOUT_FLOW
+}
+
+enum CheckStatus {
+  UP
+  DOWN
 }
 
 type JsError {
@@ -138,7 +181,7 @@ type JsError {
 type Alert {
   id: ID!
   siteId: ID!
-  type: AlertType!
+  alertType: AlertType!
   status: AlertStatus!
   message: String!
   createdAt: DateTime!
@@ -146,16 +189,60 @@ type Alert {
 }
 
 enum AlertType {
-  DOWN
+  SITE_DOWN
+  PAGE_DOWN
   JS_ERROR
   CHECKOUT_FAILED
-  DEGRADED
 }
 
 enum AlertStatus {
   OPEN
   RESOLVED
-  ACKNOWLEDGED
+}
+```
+
+### DashboardStats
+
+```graphql
+type DashboardStats {
+  totalSites: Int!
+  sitesUp: Int!
+  sitesDown: Int!
+  sitesPaused: Int!
+  totalChecks24h: Int!
+  avgResponseTimeMs: Float
+}
+```
+
+### QuotaInfo
+
+```graphql
+type QuotaInfo {
+  sitesUsed: Int!
+  sitesLimit: Int!
+  pagesUsed: Int!
+  pagesLimit: Int!
+  browserChecksUsed: Int!
+  browserChecksLimit: Int!
+  checkoutFlowsUsed: Int!
+  checkoutFlowsLimit: Int!
+}
+```
+
+### NotificationSettings
+
+```graphql
+type NotificationSettings {
+  emailEnabled: Boolean!
+  emailAddresses: [String!]!
+  slackEnabled: Boolean!
+  slackWebhookUrl: String
+  discordEnabled: Boolean!
+  discordWebhookUrl: String
+  pagerdutyEnabled: Boolean!
+  pagerdutyIntegrationKey: String
+  webhookEnabled: Boolean!
+  webhookUrl: String
 }
 ```
 
@@ -171,20 +258,26 @@ query {
     url
     status
     muted
+    checkIntervalSeconds
   }
 }
 ```
 
-### Get Recent Checks
+### Get Site with Pages
 
 ```graphql
-query {
-  checks(siteId: "site_abc123", limit: 10) {
+query GetSiteDetails($siteId: ID!) {
+  site(id: $siteId) {
     id
+    name
+    url
     status
-    responseTimeMs
-    errorMessage
-    createdAt
+  }
+  sitePages(siteId: $siteId) {
+    id
+    name
+    path
+    status
   }
 }
 ```
@@ -198,23 +291,71 @@ query {
     sitesUp
     sitesDown
     totalChecks24h
-    avgResponseTime
+    avgResponseTimeMs
+  }
+  quotaUsage {
+    sitesUsed
+    sitesLimit
+    browserChecksUsed
+    browserChecksLimit
   }
 }
 ```
 
-## Rate Limits
+### Get Recent Checks
 
-| Plan | Requests/Hour |
-|------|---------------|
-| Free | 100 |
-| Pro | 1,000 |
-| Enterprise | 10,000 |
+```graphql
+query {
+  checks(siteId: "uuid-here", limit: 10) {
+    id
+    status
+    responseTimeMs
+    errorMessage
+    createdAt
+  }
+}
+```
+
+## Example Mutations
+
+### Create a Site
+
+```graphql
+mutation {
+  createSite(input: {
+    name: "My Store"
+    url: "https://mystore.com"
+    checkIntervalSeconds: 60
+  }) {
+    id
+    name
+    status
+  }
+}
+```
+
+### Update Notification Settings
+
+```graphql
+mutation {
+  updateNotificationSettings(input: {
+    emailEnabled: true
+    emailAddresses: ["alerts@company.com"]
+    slackEnabled: true
+    slackWebhookUrl: "https://hooks.slack.com/..."
+  }) {
+    emailEnabled
+    slackEnabled
+  }
+}
+```
 
 ## GraphQL Playground
 
-Explore the API interactively at:
+Explore the API interactively when logged in:
 
 ```
-https://api.pulsar.byte8.io/graphql/playground
+https://pulsar.byte8.io/graphql
 ```
+
+Use the GraphQL Playground in your browser's developer tools or a client like [Altair](https://altairgraphql.dev/).

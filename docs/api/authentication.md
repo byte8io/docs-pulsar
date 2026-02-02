@@ -13,102 +13,64 @@ Learn how to authenticate with the Pulsar API.
 
 When using Pulsar through the web interface, authentication is handled automatically via session cookies set by `auth.byte8.io`.
 
-### Personal Access Tokens (API)
+All API requests from the Pulsar dashboard use this method automatically.
 
-For programmatic access, use Personal Access Tokens (PATs).
+## Current Limitations
 
-## Creating a Personal Access Token
-
-1. Log in to [pulsar.byte8.io](https://pulsar.byte8.io)
-2. Go to **Settings > API Tokens**
-3. Click **Create Token**
-4. Give it a descriptive name
-5. Select the scopes you need
-6. Click **Create**
-7. Copy the token immediately (it won't be shown again)
-
-## Using Tokens
-
-Include the token in the Authorization header:
-
-```bash
-curl -X POST https://api.pulsar.byte8.io/graphql \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer pat_abc123..." \
-  -d '{"query": "{ sites { id name } }"}'
-```
-
-### In Code
-
-```javascript
-const response = await fetch('https://api.pulsar.byte8.io/graphql', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.PULSAR_TOKEN}`,
-  },
-  body: JSON.stringify({
-    query: `{ sites { id name status } }`,
-  }),
-});
-```
-
-## Token Scopes
-
-| Scope | Access |
-|-------|--------|
-| `read:sites` | Read site information |
-| `write:sites` | Create, update, delete sites |
-| `read:checks` | Read check history |
-| `read:alerts` | Read alerts |
-| `write:alerts` | Resolve/acknowledge alerts |
-
-## Token Security
-
-:::warning
-Treat API tokens like passwords. Never commit them to version control or share them publicly.
+:::info Coming Soon
+**Personal Access Tokens (PATs)** for programmatic API access are planned for a future release. Currently, API access is limited to authenticated web sessions.
 :::
 
-Best practices:
+## Session-Based API Access
 
-1. **Use environment variables** - Store tokens in `.env` files
-2. **Rotate regularly** - Create new tokens periodically
-3. **Minimal scopes** - Only request the scopes you need
-4. **Delete unused tokens** - Revoke tokens you no longer use
+For now, API access is available through the web interface:
 
-## Revoking Tokens
+1. Log in to [pulsar.byte8.io](https://pulsar.byte8.io)
+2. Use the browser's developer tools to inspect GraphQL requests
+3. The session cookie is automatically included
 
-1. Go to **Settings > API Tokens**
-2. Find the token to revoke
-3. Click **Revoke**
-4. Confirm the action
+### How Sessions Work
 
-Revoked tokens are immediately invalid.
+1. You authenticate via `auth.byte8.io`
+2. A secure session cookie is set for `*.byte8.io`
+3. All requests to `pulsar.byte8.io` include this cookie
+4. The Pulsar API validates the session on each request
 
-## Token Limits
+## Security
 
-| Plan | Max Tokens |
-|------|------------|
-| Free | 2 |
-| Pro | 10 |
-| Enterprise | Unlimited |
+### Session Security
+
+- Sessions are HTTP-only and secure
+- Sessions expire after inactivity
+- Logging out invalidates the session immediately
+
+### Best Practices
+
+1. **Don't share sessions** - Each user should have their own account
+2. **Log out when done** - Especially on shared computers
+3. **Use strong passwords** - Protect your Byte8 account
+4. **Enable 2FA** - When available, enable two-factor authentication
+
+## Future: API Tokens
+
+When API tokens are available, you'll be able to:
+
+- Create tokens with specific scopes
+- Use tokens for CI/CD integration
+- Build custom integrations
+- Access the API programmatically
+
+Stay tuned for updates on this feature.
 
 ## Troubleshooting
 
 ### 401 Unauthorized
 
-- Verify the token is correct
-- Check the token hasn't been revoked
-- Ensure the `Authorization` header is properly formatted
+- Your session may have expired - log in again
+- Cookies may be blocked - check browser settings
+- Try clearing cookies and logging in fresh
 
 ### 403 Forbidden
 
-- Check the token has the required scopes
-- Verify you have access to the requested resource
-
-### Token Not Working
-
-1. Verify the token hasn't expired
-2. Check for extra whitespace in the header
-3. Ensure you're using `Bearer` authentication
-4. Try creating a new token
+- You may not have access to the requested resource
+- Check that you own the site you're trying to access

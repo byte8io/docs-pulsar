@@ -5,7 +5,7 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
  *
  * Organized by functionality:
  * - Getting Started (intro, setup)
- * - Monitoring (HTTP checks, browser checks, checkout flows)
+ * - Monitoring (HTTP checks, browser checks, checkout flows, basic auth)
  * - Alerts (configuration, notifications)
  * - API (GraphQL reference)
  */
@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         "monitoring/http-checks",
         "monitoring/browser-checks",
         "monitoring/checkout-flows",
-        "monitoring/error-patterns",
+        "monitoring/basic-auth",
       ],
     },
     {
@@ -36,6 +36,8 @@ const sidebars: SidebarsConfig = {
         "alerts/overview",
         "alerts/email-notifications",
         "alerts/slack-integration",
+        "alerts/discord-integration",
+        "alerts/pagerduty-integration",
         "alerts/webhooks",
       ],
     },

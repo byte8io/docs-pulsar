@@ -17,21 +17,39 @@ Pulsar's synthetic checkout test:
 4. Verifies each step completes successfully
 5. Stops before actual payment submission
 
-## Configuration
+## Setting Up Checkout Flow Monitoring
 
-### Product URL
+To configure checkout flow monitoring for your site:
 
-Specify a product page URL for the test:
-
-```
-Product URL: /test-product.html
-```
+1. Go to **Sites** in the left-hand menu
+2. Click on the site you want to configure
+3. Find the **Checkout Flow Monitor** section
+4. Configure the following settings:
+   - **Product Path** - URL path to a test product (e.g., `/test-product.html`)
+   - **Checkout Path** - URL path to checkout (e.g., `/checkout`)
+   - **Theme** - Select your Magento theme (Luma, Hyvä, or Custom)
+   - **Check Interval** - How often to run the checkout test
+5. Toggle **Enable Checkout Flow Monitoring** to ON
+6. Click **Save**
 
 :::tip
 Create a dedicated test product that's always in stock and has simple options.
 :::
 
-### Flow Steps
+### Advanced: Custom Selectors
+
+If you have a customized checkout, expand the **Advanced** section to configure custom CSS selectors:
+
+| Selector | Description |
+|----------|-------------|
+| **Product Info Selector** | Element containing product details |
+| **Add to Cart Button Selector** | The add to cart button (e.g., `#product-addtocart-button`) |
+| **Cart Success Message Selector** | Element shown when item is added to cart |
+| **Checkout Shipping Form Selector** | The shipping form element |
+
+Click **Save** after configuring custom selectors.
+
+## Flow Steps
 
 The default Magento 2 checkout flow:
 
@@ -42,16 +60,6 @@ The default Magento 2 checkout flow:
 | Cart Page | Product in cart, proceed button |
 | Checkout - Shipping | Shipping form renders |
 | Checkout - Payment | Payment methods visible |
-
-### Custom Selectors
-
-Override default selectors for customized checkouts:
-
-```yaml
-add_to_cart: "#product-addtocart-button"
-minicart: ".counter-number"
-proceed_to_checkout: "#top-cart-btn-checkout"
-```
 
 ## Status Determination
 
@@ -69,7 +77,6 @@ When a checkout flow fails, Pulsar reports:
 - Which step failed
 - What element was expected
 - Any JavaScript errors captured
-- Screenshot of the failure (if enabled)
 
 ## Best Practices
 
@@ -108,3 +115,11 @@ For occasional failures:
 - Check for A/B tests that might change selectors
 - Review third-party script interference
 - Verify checkout customizations are loading consistently
+
+### Custom Theme Issues
+
+If using a custom theme:
+
+1. Use browser DevTools to find the correct selectors
+2. Test selectors manually before configuring
+3. Update selectors after theme changes

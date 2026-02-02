@@ -18,27 +18,33 @@ Navigate to [pulsar.byte8.io](https://pulsar.byte8.io) and sign in with your Byt
 
 ## Step 2: Add Your First Site
 
-1. Click **Add Site** in the dashboard
-2. Enter your store's URL (e.g., `https://mystore.com`)
-3. Give it a friendly name
+1. Go to **Sites** in the left-hand menu
+2. Click **Add Site** button (top right)
+3. Fill in the form:
+   - **Name** - Give your site a friendly name (e.g., "Production Store")
+   - **URL** - Enter your store's URL (e.g., `https://mystore.com`)
+   - **Check Interval** - Select how often to check your site (depends on your plan tier)
 4. Click **Create**
 
-Pulsar will immediately start monitoring your site with a basic HTTP health check.
+Pulsar will immediately start monitoring your site with HTTP health checks.
 
 ## Step 3: Configure Monitoring
 
-After adding your site, you can configure additional monitoring:
+After adding your site, you can configure additional monitoring by clicking on the site:
 
+- **Monitored Pages** - Add additional pages to monitor beyond the homepage
 - **Browser checks** - Enable JavaScript error detection
-- **Checkout flows** - Set up synthetic purchase testing
-- **Check interval** - Adjust how often Pulsar checks your site
+- **Checkout flows** - Set up synthetic checkout testing
+- **Basic Auth** - Configure credentials if your site is password-protected
 
 ## Step 4: Set Up Notifications
 
-Go to **Settings > Notifications** to configure how you want to be alerted:
+Go to **Settings** (gear icon) to configure how you want to be alerted:
 
 - Email notifications
 - Slack integration
+- Discord integration
+- PagerDuty integration
 - Custom webhooks
 
 ## What's Next?
@@ -46,3 +52,4 @@ Go to **Settings > Notifications** to configure how you want to be alerted:
 - Learn about [HTTP Checks](/monitoring/http-checks) in detail
 - Set up [Checkout Flow](/monitoring/checkout-flows) monitoring
 - Configure [Slack Integration](/alerts/slack-integration)
+- Set up [Basic Auth](/monitoring/basic-auth) for protected sites
