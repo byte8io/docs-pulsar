@@ -1,16 +1,60 @@
 /**
- * Pulsar Documentation Theme
+ * Byte8 Pulsar — docs theme
  *
- * Custom CSS to match the Pulsar web app color palette.
- * Colors sourced from apps/pulsar/web/src/lib/theme.ts
+ * Matches the pulsar.byte8.io dashboard aesthetic:
+ *   - Deep near-black background (#0A0A0B)
+ *   - Soft rounded surface panels with hairline borders
+ *   - Pulsar purple accent (#8B5CF6) — sits in the "monitoring / signal"
+ *     product family, distinct from Orbit orange (deployment) and the
+ *     accounting connectors. Matches the dashboard's primary color exactly.
+ *   - Subtle gradients on hover, like the marketing product cards
  */
 
-/* =============================================================================
-   Light Mode (for users who prefer light themes)
-   ============================================================================= */
+/* ============================================================
+   Light mode (kept usable but dark is the default + canonical)
+   ============================================================ */
 :root {
-  /* Primary - Purple/Violet */
-  --ifm-color-primary: #8B5CF6;
+  --ifm-color-primary: #7C3AED;            /* darker purple for AA contrast on white */
+  --ifm-color-primary-dark: #6D28D9;
+  --ifm-color-primary-darker: #5B21B6;
+  --ifm-color-primary-darkest: #4C1D95;
+  --ifm-color-primary-light: #8B5CF6;
+  --ifm-color-primary-lighter: #A78BFA;
+  --ifm-color-primary-lightest: #C4B5FD;
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8fafc;
+
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'SF Mono', Monaco,
+    'Cascadia Code', Consolas, monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.65;
+  --ifm-heading-font-weight: 600;
+
+  --ifm-code-font-size: 88%;
+  --ifm-code-border-radius: 6px;
+  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.12);
+
+  --ifm-global-radius: 12px;
+  --ifm-button-border-radius: 999px;
+}
+
+/* ============================================================
+   Dark mode — the primary, canonical theme
+   ============================================================ */
+[data-theme='dark'] {
+  /* Background hierarchy — matches the pulsar.byte8.io dashboard */
+  --ifm-background-color: #0A0A0B;
+  --ifm-background-surface-color: #18181B;
+  --ifm-color-emphasis-100: #1f1f23;
+  --ifm-color-emphasis-200: #27272A;
+  --ifm-color-emphasis-300: #3f3f46;
+  --ifm-color-emphasis-1000: #FAFAFA;
+
+  /* Primary accent — Pulsar purple palette */
+  --ifm-color-primary: #8B5CF6;            /* dashboard primary */
   --ifm-color-primary-dark: #7C3AED;
   --ifm-color-primary-darker: #6D28D9;
   --ifm-color-primary-darkest: #5B21B6;
@@ -18,344 +62,251 @@
   --ifm-color-primary-lighter: #C4B5FD;
   --ifm-color-primary-lightest: #DDD6FE;
 
-  /* Secondary - Indigo */
-  --ifm-color-secondary: #6366F1;
+  /* Code blocks */
+  --ifm-code-background: #18181B;
+  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.14);
 
-  /* Semantic colors */
-  --ifm-color-success: #10B981;
-  --ifm-color-success-dark: #059669;
-  --ifm-color-success-light: #34D399;
+  /* Navbar */
+  --ifm-navbar-background-color: rgba(10, 10, 11, 0.85);
+  --ifm-navbar-shadow: none;
 
-  --ifm-color-warning: #F59E0B;
-  --ifm-color-warning-dark: #D97706;
-  --ifm-color-warning-light: #FBBF24;
-
-  --ifm-color-danger: #EF4444;
-  --ifm-color-danger-dark: #DC2626;
-  --ifm-color-danger-light: #F87171;
-
-  --ifm-color-info: #6366F1;
-
-  /* Typography */
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --ifm-heading-font-weight: 600;
-  --ifm-font-weight-semibold: 600;
-
-  /* Code */
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.1);
-
-  /* Layout */
-  --ifm-global-radius: 8px;
-  --ifm-code-border-radius: 6px;
-
-  /* Links */
-  --ifm-link-color: var(--ifm-color-primary);
-  --ifm-link-hover-color: var(--ifm-color-primary-dark);
+  /* Cards / surfaces */
+  --byte8-card-bg: #18181B;
+  --byte8-card-border: rgba(255, 255, 255, 0.06);
+  --byte8-card-border-hover: rgba(139, 92, 246, 0.40);
 }
 
-/* =============================================================================
-   Dark Mode (default for Pulsar)
-   ============================================================================= */
-[data-theme="dark"] {
-  /* Primary - Purple/Violet (slightly lighter for dark mode) */
-  --ifm-color-primary: #A78BFA;
-  --ifm-color-primary-dark: #8B5CF6;
-  --ifm-color-primary-darker: #7C3AED;
-  --ifm-color-primary-darkest: #6D28D9;
-  --ifm-color-primary-light: #C4B5FD;
-  --ifm-color-primary-lighter: #DDD6FE;
-  --ifm-color-primary-lightest: #EDE9FE;
-
-  /* Background colors matching Pulsar app */
-  --ifm-background-color: #0A0A0B;
-  --ifm-background-surface-color: #18181B;
-  --ifm-navbar-background-color: #18181B;
-  --ifm-footer-background-color: #18181B;
-  --ifm-toc-border-color: #27272A;
-  --ifm-color-emphasis-300: #27272A;
-
-  /* Text colors */
-  --ifm-font-color-base: #FAFAFA;
-  --ifm-font-color-secondary: #A1A1AA;
-  --ifm-heading-color: #FAFAFA;
-
-  /* Code highlighting */
-  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.2);
-
-  /* Card/paper backgrounds */
-  --ifm-card-background-color: #18181B;
-  --ifm-menu-color-background-active: #27272A;
-  --ifm-menu-color-background-hover: #27272A;
-
-  /* Borders */
-  --ifm-hr-border-color: #27272A;
-  --ifm-toc-border-color: #27272A;
-  --ifm-color-emphasis-200: #27272A;
+/* ============================================================
+   Global typography
+   ============================================================ */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* =============================================================================
-   Component Overrides
-   ============================================================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--ifm-heading-font-weight);
+  letter-spacing: -0.02em;
+}
 
-/* Navbar */
+[data-theme='dark'] body {
+  background-color: var(--ifm-background-color);
+  background-image:
+    radial-gradient(circle at 10% -10%, rgba(139, 92, 246, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(99, 102, 241, 0.04), transparent 35%);
+  background-attachment: fixed;
+}
+
+/* ============================================================
+   Navbar — matches byte8.io marketing site
+   ============================================================ */
 .navbar {
-  box-shadow: 0 1px 0 0 var(--ifm-toc-border-color);
-}
-
-[data-theme="dark"] .navbar {
-  background-color: #18181B;
-  border-bottom: 1px solid #27272A;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--byte8-card-border, rgba(0, 0, 0, 0.05));
 }
 
 .navbar__title {
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Sidebar */
-[data-theme="dark"] .menu {
+[data-theme='dark'] .navbar {
+  background-color: rgba(10, 10, 11, 0.85);
+}
+
+/* CTA button on the navbar — pill, purple */
+.navbar-cta-button {
+  background: var(--ifm-color-primary);
+  color: #ffffff !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.navbar-cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.30);
+}
+
+/* GitHub icon */
+.header-github-link::before {
+  content: '';
+  width: 22px;
+  height: 22px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23000' d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme='dark'] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+.header-github-link:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   Sidebar — quieter than default
+   ============================================================ */
+[data-theme='dark'] .menu {
   background-color: transparent;
 }
 
-[data-theme="dark"] .menu__link:hover {
-  background-color: #27272A;
+.menu__link {
+  border-radius: 8px;
+  font-size: 0.92rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-[data-theme="dark"] .menu__link--active {
-  background-color: rgba(139, 92, 246, 0.15);
-  border-left: 3px solid var(--ifm-color-primary);
+.menu__link--active {
+  font-weight: 600;
 }
 
-/* Table of Contents */
-[data-theme="dark"] .table-of-contents__link:hover,
-[data-theme="dark"] .table-of-contents__link--active {
-  color: var(--ifm-color-primary);
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--ifm-color-primary-light);
 }
 
-/* Code blocks */
-[data-theme="dark"] .prism-code {
-  background-color: #1E1E1E !important;
+.menu__list-item-collapsible:hover,
+.menu__link:hover {
+  background: var(--ifm-color-emphasis-100);
 }
 
-[data-theme="dark"] pre {
-  background-color: #1E1E1E;
-  border: 1px solid #27272A;
+/* ============================================================
+   Code blocks
+   ============================================================ */
+pre code {
+  border-radius: var(--ifm-code-border-radius);
+  font-size: 0.875rem;
 }
 
-/* Inline code */
-[data-theme="dark"] code {
-  background-color: #27272A;
-  border: 1px solid #3F3F46;
-  color: #A78BFA;
+[data-theme='dark'] .theme-code-block {
+  background-color: #0d0d0f !important;
+  border: 1px solid var(--byte8-card-border);
 }
 
-/* Admonitions/Alerts */
-[data-theme="dark"] .alert {
-  background-color: #18181B;
-  border-left-width: 4px;
+code {
+  border: 1px solid var(--ifm-color-emphasis-200);
 }
 
-[data-theme="dark"] .alert--info {
-  --ifm-alert-background-color: rgba(99, 102, 241, 0.1);
-  --ifm-alert-border-color: #6366F1;
+/* ============================================================
+   Admonitions
+   ============================================================ */
+.admonition {
+  border-radius: var(--ifm-global-radius);
+  border-width: 1px;
+  border-style: solid;
 }
 
-[data-theme="dark"] .alert--warning {
-  --ifm-alert-background-color: rgba(245, 158, 11, 0.1);
-  --ifm-alert-border-color: #F59E0B;
+[data-theme='dark'] .admonition {
+  background: var(--byte8-card-bg);
+  border-color: var(--byte8-card-border);
 }
 
-[data-theme="dark"] .alert--danger {
-  --ifm-alert-background-color: rgba(239, 68, 68, 0.1);
-  --ifm-alert-border-color: #EF4444;
+[data-theme='dark'] .admonition--note .admonition-icon svg {
+  fill: var(--ifm-color-primary-light);
 }
 
-[data-theme="dark"] .alert--success {
-  --ifm-alert-background-color: rgba(16, 185, 129, 0.1);
-  --ifm-alert-border-color: #10B981;
+/* ============================================================
+   Buttons
+   ============================================================ */
+.button {
+  font-weight: 600;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Cards */
-[data-theme="dark"] .card {
-  background-color: #18181B;
-  border: 1px solid #27272A;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.30);
 }
 
-/* Buttons */
 .button--primary {
-  background-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
+  color: #ffffff;
 }
 
-.button--primary:hover {
-  background-color: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-dark);
+[data-theme='dark'] .button--primary {
+  background: var(--ifm-color-primary);
+  color: #ffffff;
 }
 
-/* Footer */
-[data-theme="dark"] .footer {
-  background-color: #18181B;
-  border-top: 1px solid #27272A;
+.button--secondary {
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-1000);
+}
+
+[data-theme='dark'] .button--secondary {
+  background: transparent;
+  color: #FAFAFA;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  background: #050506;
+  border-top: 1px solid var(--byte8-card-border);
+  padding: 3rem 0 2rem;
 }
 
 .footer__title {
   font-weight: 600;
-}
-
-/* Search (for when Algolia is configured) */
-[data-theme="dark"] .DocSearch-Button {
-  background-color: #27272A;
-  border: 1px solid #3F3F46;
-}
-
-[data-theme="dark"] .DocSearch-Button:hover {
-  background-color: #3F3F46;
-}
-
-/* Tables */
-[data-theme="dark"] table {
-  border-collapse: collapse;
-}
-
-[data-theme="dark"] th {
-  background-color: #18181B;
-  font-weight: 600;
-}
-
-[data-theme="dark"] td,
-[data-theme="dark"] th {
-  border-color: #27272A;
-}
-
-[data-theme="dark"] tr:nth-child(2n) {
-  background-color: rgba(39, 39, 42, 0.5);
-}
-
-/* Pagination */
-[data-theme="dark"] .pagination-nav__link {
-  background-color: #18181B;
-  border: 1px solid #27272A;
-}
-
-[data-theme="dark"] .pagination-nav__link:hover {
-  background-color: #27272A;
-  border-color: var(--ifm-color-primary);
-}
-
-/* Tabs */
-[data-theme="dark"] .tabs__item {
-  border-bottom-color: transparent;
-}
-
-[data-theme="dark"] .tabs__item--active {
-  border-bottom-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
-}
-
-[data-theme="dark"] .tabs__item:hover {
-  background-color: #27272A;
-}
-
-/* Breadcrumbs */
-[data-theme="dark"] .breadcrumbs__link {
-  color: var(--ifm-font-color-secondary);
-}
-
-[data-theme="dark"] .breadcrumbs__link:hover {
-  color: var(--ifm-color-primary);
-}
-
-/* =============================================================================
-   Particles Background Integration
-   ============================================================================= */
-
-/* Main content area - above particles, slightly transparent */
-main {
-  position: relative;
-  z-index: 10;
-}
-
-[data-theme="dark"] main {
-  background-color: rgba(10, 10, 11, 0.85);
-}
-
-/* Footer - above particles, slightly transparent */
-.footer {
-  position: relative;
-  z-index: 10;
-  margin-top: 14rem;
-}
-
-[data-theme="dark"] .footer {
-  background-color: rgba(24, 24, 27, 0.9) !important;
-}
-
-/* Navbar - above particles */
-.navbar {
-  position: relative;
-  z-index: 100;
-}
-
-[data-theme="dark"] .navbar {
-  background-color: rgba(24, 24, 27, 0.95) !important;
-}
-
-/* =============================================================================
-   Custom Components
-   ============================================================================= */
-
-/* Feature cards on homepage */
-.feature-card {
-  background-color: var(--ifm-card-background-color);
-  border-radius: var(--ifm-global-radius);
-  padding: 1.5rem;
-  border: 1px solid var(--ifm-toc-border-color);
-  transition: border-color 0.2s ease;
-}
-
-.feature-card:hover {
-  border-color: var(--ifm-color-primary);
-}
-
-/* API reference styling */
-.api-method {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifm-color-emphasis-600);
 }
 
-.api-method--get {
-  background-color: rgba(16, 185, 129, 0.2);
-  color: #10B981;
+.footer__link-item {
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-700);
 }
 
-.api-method--post {
-  background-color: rgba(99, 102, 241, 0.2);
-  color: #6366F1;
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+  text-decoration: none;
 }
 
-.api-method--put {
-  background-color: rgba(245, 158, 11, 0.2);
-  color: #F59E0B;
+.footer__copyright {
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-500);
 }
 
-.api-method--delete {
-  background-color: rgba(239, 68, 68, 0.2);
-  color: #EF4444;
+/* ============================================================
+   TOC
+   ============================================================ */
+.table-of-contents {
+  font-size: 0.85rem;
 }
 
-/* Version badge */
-.version-badge {
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary-light);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Check-status chips — used in monitoring docs so the
+   screenshots feel native against the dashboard.
+   ============================================================ */
+.check-chip {
   display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background-color: rgba(139, 92, 246, 0.2);
-  color: var(--ifm-color-primary);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
+.check-chip--up      { background: rgba(16, 185, 129, 0.20); color: #6ee7b7; }
+.check-chip--degraded { background: rgba(245, 158, 11, 0.20); color: #fcd34d; }
+.check-chip--down    { background: rgba(239, 68, 68, 0.20); color: #fca5a5; }
+.check-chip--paused  { background: rgba(139, 92, 246, 0.20); color: #c4b5fd; }

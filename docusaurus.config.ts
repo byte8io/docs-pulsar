@@ -3,8 +3,9 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "Pulsar Docs",
-  tagline: "Magento Monitoring & Synthetic Checks",
+  title: "Byte8 Pulsar",
+  tagline:
+    "24/7 uptime + checkout monitoring for any ecommerce platform. Smart alerting on the channels you already use. Optional Magento extension adds 15+ health collectors.",
   favicon: "img/favicon.ico",
 
   // Future flags for Docusaurus v4 compatibility
@@ -57,9 +58,19 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/docs",
-          editUrl: "https://github.com/byte8io/byte8.io/tree/main/apps/pulsar/docs/",
+          editUrl: "https://github.com/byte8io/docs.pulsar.byte8.io/edit/main/",
         },
-        blog: false, // Disable blog for now
+        blog: {
+          showReadingTime: true,
+          blogTitle: "Changelog & updates",
+          blogDescription: "Release notes for Byte8 Pulsar",
+          postsPerPage: 10,
+          feedOptions: {
+            type: ["rss", "atom"],
+            xslt: true,
+          },
+          editUrl: "https://github.com/byte8io/docs.pulsar.byte8.io/edit/main/",
+        },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -83,11 +94,13 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Pulsar",
+      title: "Byte8 Pulsar",
       logo: {
-        alt: "Pulsar Logo",
+        alt: "Byte8 Pulsar",
         src: "img/logo.svg",
         srcDark: "img/logo-dark.svg",
+        width: 32,
+        height: 32,
       },
       items: [
         {
@@ -96,70 +109,70 @@ const config: Config = {
           position: "left",
           label: "Docs",
         },
+        { to: "/blog", label: "Changelog", position: "left" },
+        {
+          href: "https://byte8.io/products/pulsar#pricing",
+          label: "Pricing",
+          position: "left",
+        },
+        {
+          href: "https://github.com/byte8io/module-pulsar",
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "Pulsar Magento extension on GitHub",
+        },
         {
           href: "https://pulsar.byte8.io",
           label: "Dashboard",
-          position: "left",
+          position: "right",
+          className: "navbar-cta-button",
         },
       ],
     },
     footer: {
       style: "dark",
+      logo: {
+        alt: "Byte8",
+        src: "img/logo.svg",
+        href: "https://byte8.io",
+        width: 32,
+        height: 32,
+      },
       links: [
         {
-          title: "Documentation",
+          title: "Docs",
           items: [
-            {
-              label: "Getting Started",
-              to: "/docs",
-            },
-            {
-              label: "HTTP Monitoring",
-              to: "/docs/monitoring/http-checks",
-            },
-            {
-              label: "Checkout Flows",
-              to: "/docs/monitoring/checkout-flows",
-            },
+            { label: "Quick start", to: "/docs/getting-started/quick-start" },
+            { label: "HTTP checks", to: "/docs/monitoring/http-checks" },
+            { label: "Checkout flows", to: "/docs/monitoring/checkout-flows" },
+            { label: "Alerts", to: "/docs/alerts/overview" },
           ],
         },
         {
-          title: "Product",
+          title: "Resources",
           items: [
-            {
-              label: "Pulsar Dashboard",
-              href: "https://pulsar.byte8.io",
-            },
-            {
-              label: "Status",
-              href: "https://pulsar.byte8.io/status",
-            },
-            {
-              label: "Pricing",
-              href: "https://byte8.io/pulsar/pricing",
-            },
+            { label: "Changelog", to: "/blog" },
+            { label: "Dashboard", href: "https://pulsar.byte8.io" },
+            { label: "Pricing", href: "https://byte8.io/products/pulsar#pricing" },
+            { label: "Magento extension", href: "https://github.com/byte8io/module-pulsar" },
           ],
         },
         {
-          title: "Company",
+          title: "Byte8",
           items: [
-            {
-              label: "Byte8",
-              href: "https://byte8.io",
-            },
-            {
-              label: "Contact",
-              href: "mailto:support@byte8.io",
-            },
+            { label: "byte8.io", href: "https://byte8.io" },
+            { label: "Pulsar product", href: "https://byte8.io/products/pulsar" },
+            { label: "Orbit (zero-downtime deploys)", href: "https://docs.byte8.io/orbit/" },
+            { label: "Contact", href: "mailto:helo@byte8.io" },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Byte8. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Byte8 Ltd.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ["bash", "json", "yaml", "php", "rust"],
+      theme: prismThemes.vsDark,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ["bash", "json", "yaml", "toml", "php", "rust", "graphql", "nginx", "diff"],
     },
     // Algolia DocSearch (configure later)
     // algolia: {
