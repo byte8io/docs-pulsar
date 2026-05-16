@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
@@ -17,7 +18,7 @@ function HomepageHeader() {
       <div className={clsx("container", styles.heroContent)}>
         <div className={styles.heroLogo}>
           <img
-            src="/img/pulsar-hero.svg"
+            src={useBaseUrl("/img/pulsar-hero.svg")}
             alt="Pulsar Logo"
             className={styles.logoImage}
           />

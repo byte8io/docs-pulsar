@@ -12,14 +12,9 @@ const config: Config = {
     v4: true,
   },
 
-  // Production URL - custom domain
-  url: "https://docs.pulsar.byte8.io",
-  baseUrl: "/",
-
-  // GitHub Pages deployment config
-  organizationName: "byte8", // GitHub org
-  projectName: "pulsar-docs", // GitHub repo name
-  deploymentBranch: "gh-pages",
+  // Production URL — served under unified docs domain (Cloudflare Pages + Worker router)
+  url: "https://docs.byte8.io",
+  baseUrl: "/pulsar/",
   trailingSlash: false,
 
   onBrokenLinks: "throw",
@@ -45,7 +40,7 @@ const config: Config = {
       tagName: "link",
       attributes: {
         rel: "canonical",
-        href: "https://docs.pulsar.byte8.io",
+        href: "https://docs.byte8.io/pulsar",
       },
     },
   ],
@@ -62,7 +57,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/docs",
-          editUrl: "https://github.com/byte8/pulsar-docs/tree/main/",
+          editUrl: "https://github.com/byte8io/byte8.io/tree/main/apps/pulsar/docs/",
         },
         blog: false, // Disable blog for now
         theme: {

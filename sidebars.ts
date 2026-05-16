@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
         "monitoring/http-checks",
         "monitoring/browser-checks",
         "monitoring/checkout-flows",
+        "monitoring/health-monitoring",
         "monitoring/basic-auth",
       ],
     },
@@ -46,6 +47,7 @@ const sidebars: SidebarsConfig = {
       label: "API Reference",
       items: ["api/graphql", "api/authentication"],
     },
+    "faq",
   ],
 };
 

@@ -2,9 +2,9 @@
 
 Public documentation site for Pulsar - Magento Monitoring & Synthetic Checks.
 
-**URL:** https://docs.pulsar.byte8.io
+**URL:** https://docs.byte8.io/pulsar/
 
-Built with [Docusaurus](https://docusaurus.io/).
+Built with [Docusaurus](https://docusaurus.io/). Served under the unified Byte8 docs domain via Cloudflare Pages + a path-based Worker router.
 
 ## Development
 
@@ -24,12 +24,15 @@ pnpm serve
 
 ## Deployment
 
-This site will be deployed to GitHub Pages at `docs.pulsar.byte8.io` via a separate repository.
+Deployed via **Cloudflare Pages**, built directly from this monorepo on every push to `main` that touches `apps/pulsar/docs/`.
 
-```bash
-# Deploy to GitHub Pages
-GIT_USER=<username> pnpm deploy
-```
+- **Cloudflare Pages project:** `pulsar-docs`
+- **Build command:** `pnpm install --frozen-lockfile && pnpm --filter @byte8/pulsar-docs build`
+- **Build output directory:** `apps/pulsar/docs/build`
+- **Preview URL:** `https://pulsar-docs.pages.dev/pulsar/`
+- **Production URL:** `https://docs.byte8.io/pulsar/` (via Worker router)
+
+The Worker at `docs.byte8.io/*` routes `/pulsar/*` to this Pages project. Each product's docs follow the same pattern.
 
 ## Structure
 
