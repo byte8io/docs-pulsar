@@ -44,6 +44,12 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=22.0"
+  },
+  "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "overrides": {
+      "webpack": "5.104.1"
+    }
   }
 }
